@@ -1,0 +1,29 @@
+spring:
+  application:
+    name: fitnex
+
+  datasource:
+    url: ${DB_URL:jdbc:postgresql://localhost:5433/gym}
+    username: ${DB_USER:gym}
+    password: ${DB_PASSWORD:gym}
+
+  jpa:
+    open-in-view: false
+    hibernate:
+      ddl-auto: validate
+    properties:
+      hibernate:
+        jdbc:
+          time_zone: UTC
+
+  management:
+    endpoints:
+      web:
+        exposure:
+          include: health
+
+  logging:
+    pattern:
+      level: "%5p [%X{correlationId:-}]"
+    level:
+      org.flywaydb: INFO
