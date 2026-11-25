@@ -21,7 +21,7 @@ public final class EventHandlerSupport {
             handler.accept(envelope.data());
             log.info("Handler returned for {} eventId = {}",envelope.type(), envelope.eventId());
         }catch (RuntimeException ex){
-            log.error("Handler failer for {} eventId={} correlationId={}",envelope.type(), envelope.eventId(),correlationId,ex);
+            log.error("Handler failed for {} eventId={} correlationId={}",envelope.type(), envelope.eventId(),correlationId,ex);
             throw ex;
         }finally {
             MDC.remove(CorrelationId.MDC_KEY);
